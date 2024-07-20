@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bubble Sort in JS</title>
+</head>
+
+<body>
+  <h1>Bubble Sort Example</h1>
+  <p>Original Array: <span id="original-array"></span></p>
+  <p>Sorted Array: <span id="sorted-array"></span></p>
+  <button id="sort-btn">Sort Array</button>
+  <script>
+    function bubbleSort(arr) {
+      let len = arr.length;
+      for (let i = 0; i < len; i++) {
+        for (let j = 0; j < len - 1 - i; j++) {
+          if (arr[j] > arr[j + 1]) {
+            let temp = arr[j];
+            arr[j] = arr[j + 1];
+            arr[j + 1] = temp;
+          }
+        }
+      }
+      return arr;
+    }
+
+    const array = [64, 34, 25, 12, 22, 11, 90];
+    document.getElementById("original-array").innerText = array.join(', ');
+
+    document.getElementById("sort-btn").addEventListener("click", () => {
+      const sortedArray = bubbleSort([...array]);
+      document.getElementById("sorted-array").innerText = sortedArray.join(', ');
+    });
+  </script>
+</body>
+
+</html>
