@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recursive Bubble Sort in JS</title>
+</head>
+
+<body>
+  <h1>Recursive Bubble Sort Example</h1>
+  <p>Original Array: <span id="original-array"></span></p>
+  <p>Sorted Array: <span id="sorted-array"></span></p>
+  <button id="sort-btn">Sort Array</button>
+  <script>
+    function recursiveBubbleSort(arr, n) {
+      // Base case
+      if (n === 1) {
+        return;
+      }
+
+      // One pass of bubble sort
+      for (let i = 0; i < n - 1; i++) {
+        if (arr[i] > arr[i + 1]) {
+          // Swap arr[i] and arr[i + 1]
+          let temp = arr[i];
+          arr[i] = arr[i + 1];
+          arr[i + 1] = temp;
+        }
+      }
+
+      // Largest element is fixed, recur for remaining array
+      recursiveBubbleSort(arr, n - 1);
+    }
+
+    const array = [64, 34, 25, 12, 22, 11, 90];
+    document.getElementById("original-array").innerText = array.join(', ');
+
+    document.getElementById("sort-btn").addEventListener("click", () => {
+      const arrayCopy = [...array];
+      recursiveBubbleSort(arrayCopy, arrayCopy.length);
+      document.getElementById("sorted-array").innerText = arrayCopy.join(', ');
+    });
+  </script>
+</body>
+
+</html>
